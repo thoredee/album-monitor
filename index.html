@@ -100,6 +100,7 @@
       height: 100%;
       background: linear-gradient(90deg, #1db954, #1ed760);
       border-radius: 3px;
+      width: 22%;
       transition: width 1s ease;
     }
 
@@ -140,8 +141,13 @@
       background: #0f2618;
     }
 
-    .card.pending { opacity: 0.55; }
-    .card.manual { opacity: 0.4; }
+    .card.pending {
+      opacity: 0.55;
+    }
+
+    .card.manual {
+      opacity: 0.4;
+    }
 
     .icon {
       font-size: 1.1rem;
@@ -170,6 +176,15 @@
       color: #555;
     }
     .card.confirmed .date { color: #1db95499; }
+
+    .section-label {
+      max-width: 680px;
+      margin: 2rem auto 0.75rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #444;
+    }
   </style>
 </head>
 <body>
@@ -188,84 +203,267 @@
   <div class="progress-section">
     <div class="progress-header">
       <span class="progress-label">Platforms live</span>
-      <span class="progress-count" id="count">1 <span>/ 36</span></span>
+      <span class="progress-count">8 <span>/ 36</span></span>
     </div>
-    <div class="bar-bg"><div class="bar-fill" id="bar" style="width: 3%"></div></div>
-    <div class="last-checked" id="last-checked">Last checked: Never — first run pending</div>
+    <div class="bar-bg"><div class="bar-fill"></div></div>
+    <div class="last-checked">Last checked: 19 Mar 2026, 20:06 UTC</div>
   </div>
 
-  <div class="grid" id="grid">
-    <!-- Populated by JavaScript from status.json -->
-  </div>
-
-  <script>
-    async function load() {
-      let data;
-      try {
-        const r = await fetch('status.json?t=' + Date.now());
-        data = await r.json();
-      } catch(e) {
-        document.getElementById('last-checked').textContent = 'Could not load status.json';
-        return;
-      }
-
-      const platforms = data.platforms || {};
-      const entries = Object.entries(platforms);
-      const confirmed = entries.filter(([,v]) => v.status === 'confirmed');
-      const pending = entries.filter(([,v]) => v.status === 'pending');
-      const manual = entries.filter(([,v]) => v.status === 'manual');
-      const total = entries.length;
-      const count = confirmed.length;
-
-      document.getElementById('count').innerHTML = `${count} <span>/ ${total}</span>`;
-      document.getElementById('bar').style.width = Math.round(count/total*100) + '%';
-
-      const lc = data.last_checked;
-      if (lc) {
-        const dt = new Date(lc);
-        document.getElementById('last-checked').textContent =
-          'Last checked: ' + dt.toUTCString().replace('GMT','UTC');
-      }
-
-      const grid = document.getElementById('grid');
-      grid.innerHTML = '';
-
-      const sorted = [
-        ...confirmed.sort((a,b) => a[0].localeCompare(b[0])),
-        ...pending.sort((a,b) => a[0].localeCompare(b[0])),
-        ...manual.sort((a,b) => a[0].localeCompare(b[0])),
-      ];
-
-      for (const [name, info] of sorted) {
-        const el = document.createElement(info.status === 'confirmed' && info.link ? 'a' : 'div');
-        el.className = `card ${info.status}`;
-        if (info.status === 'confirmed' && info.link) {
-          el.href = info.link;
-          el.target = '_blank';
-          el.rel = 'noopener';
-        }
-
-        let dateStr = '';
-        if (info.confirmed_at) {
-          const d = new Date(info.confirmed_at);
-          dateStr = d.toLocaleDateString('en-GB', {day:'2-digit', month:'short', year:'numeric'});
-        } else if (info.status === 'manual') {
-          dateStr = 'regional / manual';
-        } else {
-          dateStr = 'checking hourly\u2026';
-        }
-
-        el.innerHTML = `
-          <span class="icon">${info.status === 'confirmed' ? '✓' : info.status === 'manual' ? '◎' : '○'}</span>
+  <div class="grid">
+    
+        <a class="card confirmed" target="_blank" rel="noopener" href="https://music.amazon.com/search/mecore+low_battery">
+          <span class="icon">✓</span>
           <div class="card-body">
-            <span class="platform-name">${name}</span>
-            <span class="date">${dateStr}</span>
-          </div>`;
-        grid.appendChild(el);
-      }
-    }
+            <span class="platform-name">Amazon Music</span>
+            <span class="date">19 Mar 2026</span>
+          </div>
+        </a>
+        <a class="card confirmed" target="_blank" rel="noopener" href="https://music.apple.com/album/1885981442">
+          <span class="icon">✓</span>
+          <div class="card-body">
+            <span class="platform-name">Apple Music</span>
+            <span class="date">19 Mar 2026</span>
+          </div>
+        </a>
+        <a class="card confirmed" target="_blank" rel="noopener" href="https://www.beatport.com/search/releases?q=mecore+low_battery">
+          <span class="icon">✓</span>
+          <div class="card-body">
+            <span class="platform-name">Beatport</span>
+            <span class="date">19 Mar 2026</span>
+          </div>
+        </a>
+        <a class="card confirmed" target="_blank" rel="noopener" href="https://www.boomplay.com/search/default/mecore+low_battery">
+          <span class="icon">✓</span>
+          <div class="card-body">
+            <span class="platform-name">Boomplay</span>
+            <span class="date">19 Mar 2026</span>
+          </div>
+        </a>
+        <a class="card confirmed" target="_blank" rel="noopener" href="https://www.deezer.com/album/941634461">
+          <span class="icon">✓</span>
+          <div class="card-body">
+            <span class="platform-name">Deezer</span>
+            <span class="date">19 Mar 2026</span>
+          </div>
+        </a>
+        <a class="card confirmed" target="_blank" rel="noopener" href="https://www.pandora.com/search/mecore+low_battery/albums">
+          <span class="icon">✓</span>
+          <div class="card-body">
+            <span class="platform-name">Pandora</span>
+            <span class="date">19 Mar 2026</span>
+          </div>
+        </a>
+        <a class="card confirmed" target="_blank" rel="noopener" href="https://open.spotify.com/album/6YYc7yRKfMUyvGzw1sXoRT">
+          <span class="icon">✓</span>
+          <div class="card-body">
+            <span class="platform-name">Spotify</span>
+            <span class="date">19 Mar 2026</span>
+          </div>
+        </a>
+        <a class="card confirmed" target="_blank" rel="noopener" href="https://music.youtube.com/search?q=mecore+low_battery">
+          <span class="icon">✓</span>
+          <div class="card-body">
+            <span class="platform-name">YouTube Music</span>
+            <span class="date">19 Mar 2026</span>
+          </div>
+        </a>
+        <div class="card pending" >
+          <span class="icon">○</span>
+          <div class="card-body">
+            <span class="platform-name">Anghami</span>
+            <span class="date">checking hourly…</span>
+          </div>
+        </div>
+        <div class="card pending" >
+          <span class="icon">○</span>
+          <div class="card-body">
+            <span class="platform-name">Audiomack</span>
+            <span class="date">checking hourly…</span>
+          </div>
+        </div>
+        <div class="card pending" >
+          <span class="icon">○</span>
+          <div class="card-body">
+            <span class="platform-name">JioSaavn</span>
+            <span class="date">checking hourly…</span>
+          </div>
+        </div>
+        <div class="card pending" >
+          <span class="icon">○</span>
+          <div class="card-body">
+            <span class="platform-name">Napster</span>
+            <span class="date">checking hourly…</span>
+          </div>
+        </div>
+        <div class="card pending" >
+          <span class="icon">○</span>
+          <div class="card-body">
+            <span class="platform-name">Shazam</span>
+            <span class="date">checking hourly…</span>
+          </div>
+        </div>
+        <div class="card pending" >
+          <span class="icon">○</span>
+          <div class="card-body">
+            <span class="platform-name">SoundCloud</span>
+            <span class="date">checking hourly…</span>
+          </div>
+        </div>
+        <div class="card pending" >
+          <span class="icon">○</span>
+          <div class="card-body">
+            <span class="platform-name">Tidal</span>
+            <span class="date">checking hourly…</span>
+          </div>
+        </div>
+        <div class="card pending" >
+          <span class="icon">○</span>
+          <div class="card-body">
+            <span class="platform-name">iHeartRadio</span>
+            <span class="date">checking hourly…</span>
+          </div>
+        </div>
+        <div class="card manual" >
+          <span class="icon">◎</span>
+          <div class="card-body">
+            <span class="platform-name">7digital</span>
+            <span class="date">regional / manual</span>
+          </div>
+        </div>
+        <div class="card manual" >
+          <span class="icon">◎</span>
+          <div class="card-body">
+            <span class="platform-name">AWA</span>
+            <span class="date">regional / manual</span>
+          </div>
+        </div>
+        <div class="card manual" >
+          <span class="icon">◎</span>
+          <div class="card-body">
+            <span class="platform-name">Bugs Music</span>
+            <span class="date">regional / manual</span>
+          </div>
+        </div>
+        <div class="card manual" >
+          <span class="icon">◎</span>
+          <div class="card-body">
+            <span class="platform-name">Claro Música</span>
+            <span class="date">regional / manual</span>
+          </div>
+        </div>
+        <div class="card manual" >
+          <span class="icon">◎</span>
+          <div class="card-body">
+            <span class="platform-name">Facebook / Instagram</span>
+            <span class="date">regional / manual</span>
+          </div>
+        </div>
+        <div class="card manual" >
+          <span class="icon">◎</span>
+          <div class="card-body">
+            <span class="platform-name">Gaana</span>
+            <span class="date">regional / manual</span>
+          </div>
+        </div>
+        <div class="card manual" >
+          <span class="icon">◎</span>
+          <div class="card-body">
+            <span class="platform-name">Genie Music</span>
+            <span class="date">regional / manual</span>
+          </div>
+        </div>
+        <div class="card manual" >
+          <span class="icon">◎</span>
+          <div class="card-body">
+            <span class="platform-name">Gracenote</span>
+            <span class="date">regional / manual</span>
+          </div>
+        </div>
+        <div class="card manual" >
+          <span class="icon">◎</span>
+          <div class="card-body">
+            <span class="platform-name">KKBox</span>
+            <span class="date">regional / manual</span>
+          </div>
+        </div>
+        <div class="card manual" >
+          <span class="icon">◎</span>
+          <div class="card-body">
+            <span class="platform-name">Line Music</span>
+            <span class="date">regional / manual</span>
+          </div>
+        </div>
+        <div class="card manual" >
+          <span class="icon">◎</span>
+          <div class="card-body">
+            <span class="platform-name">MediaNet</span>
+            <span class="date">regional / manual</span>
+          </div>
+        </div>
+        <div class="card manual" >
+          <span class="icon">◎</span>
+          <div class="card-body">
+            <span class="platform-name">Melon</span>
+            <span class="date">regional / manual</span>
+          </div>
+        </div>
+        <div class="card manual" >
+          <span class="icon">◎</span>
+          <div class="card-body">
+            <span class="platform-name">NetEase Cloud Music</span>
+            <span class="date">regional / manual</span>
+          </div>
+        </div>
+        <div class="card manual" >
+          <span class="icon">◎</span>
+          <div class="card-body">
+            <span class="platform-name">Nuuday</span>
+            <span class="date">regional / manual</span>
+          </div>
+        </div>
+        <div class="card manual" >
+          <span class="icon">◎</span>
+          <div class="card-body">
+            <span class="platform-name">Peloton</span>
+            <span class="date">regional / manual</span>
+          </div>
+        </div>
+        <div class="card manual" >
+          <span class="icon">◎</span>
+          <div class="card-body">
+            <span class="platform-name">QQ Music</span>
+            <span class="date">regional / manual</span>
+          </div>
+        </div>
+        <div class="card manual" >
+          <span class="icon">◎</span>
+          <div class="card-body">
+            <span class="platform-name">Resso</span>
+            <span class="date">regional / manual</span>
+          </div>
+        </div>
+        <div class="card manual" >
+          <span class="icon">◎</span>
+          <div class="card-body">
+            <span class="platform-name">Soundtrack by Twitch</span>
+            <span class="date">regional / manual</span>
+          </div>
+        </div>
+        <div class="card manual" >
+          <span class="icon">◎</span>
+          <div class="card-body">
+            <span class="platform-name">TikTok Music</span>
+            <span class="date">regional / manual</span>
+          </div>
+        </div>
+        <div class="card manual" >
+          <span class="icon">◎</span>
+          <div class="card-body">
+            <span class="platform-name">Wynk Music</span>
+            <span class="date">regional / manual</span>
+          </div>
+        </div>
+  </div>
 
-    load();
-  </script>
 </body>
 </html>

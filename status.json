@@ -1,45 +1,185 @@
 {
-  "last_checked": null,
+  "last_checked": "2026-03-19T20:06:22.258736+00:00",
   "platforms": {
     "Spotify": {
       "status": "confirmed",
       "confirmed_at": "2026-03-19T00:00:00+00:00",
       "link": "https://open.spotify.com/album/6YYc7yRKfMUyvGzw1sXoRT"
     },
-    "Apple Music": { "status": "pending", "confirmed_at": null, "link": null },
-    "Deezer": { "status": "pending", "confirmed_at": null, "link": null },
-    "iHeartRadio": { "status": "pending", "confirmed_at": null, "link": null },
-    "Pandora": { "status": "pending", "confirmed_at": null, "link": null },
-    "Tidal": { "status": "pending", "confirmed_at": null, "link": null },
-    "Amazon Music": { "status": "pending", "confirmed_at": null, "link": null },
-    "YouTube Music": { "status": "pending", "confirmed_at": null, "link": null },
-    "SoundCloud": { "status": "pending", "confirmed_at": null, "link": null },
-    "Audiomack": { "status": "pending", "confirmed_at": null, "link": null },
-    "Boomplay": { "status": "pending", "confirmed_at": null, "link": null },
-    "Anghami": { "status": "pending", "confirmed_at": null, "link": null },
-    "JioSaavn": { "status": "pending", "confirmed_at": null, "link": null },
-    "Napster": { "status": "pending", "confirmed_at": null, "link": null },
-    "Shazam": { "status": "pending", "confirmed_at": null, "link": null },
-    "Beatport": { "status": "pending", "confirmed_at": null, "link": null },
-    "NetEase Cloud Music": { "status": "manual", "confirmed_at": null, "link": null },
-    "QQ Music": { "status": "manual", "confirmed_at": null, "link": null },
-    "KKBox": { "status": "manual", "confirmed_at": null, "link": null },
-    "Line Music": { "status": "manual", "confirmed_at": null, "link": null },
-    "AWA": { "status": "manual", "confirmed_at": null, "link": null },
-    "Melon": { "status": "manual", "confirmed_at": null, "link": null },
-    "Bugs Music": { "status": "manual", "confirmed_at": null, "link": null },
-    "Genie Music": { "status": "manual", "confirmed_at": null, "link": null },
-    "Gaana": { "status": "manual", "confirmed_at": null, "link": null },
-    "Wynk Music": { "status": "manual", "confirmed_at": null, "link": null },
-    "Claro Música": { "status": "manual", "confirmed_at": null, "link": null },
-    "Nuuday": { "status": "manual", "confirmed_at": null, "link": null },
-    "TikTok Music": { "status": "manual", "confirmed_at": null, "link": null },
-    "Facebook / Instagram": { "status": "manual", "confirmed_at": null, "link": null },
-    "Peloton": { "status": "manual", "confirmed_at": null, "link": null },
-    "Gracenote": { "status": "manual", "confirmed_at": null, "link": null },
-    "MediaNet": { "status": "manual", "confirmed_at": null, "link": null },
-    "Soundtrack by Twitch": { "status": "manual", "confirmed_at": null, "link": null },
-    "Resso": { "status": "manual", "confirmed_at": null, "link": null },
-    "7digital": { "status": "manual", "confirmed_at": null, "link": null }
+    "Apple Music": {
+      "status": "confirmed",
+      "confirmed_at": "2026-03-19T20:06:14.312882+00:00",
+      "link": "https://music.apple.com/album/1885981442"
+    },
+    "Deezer": {
+      "status": "confirmed",
+      "confirmed_at": "2026-03-19T20:06:14.928963+00:00",
+      "link": "https://www.deezer.com/album/941634461"
+    },
+    "iHeartRadio": {
+      "status": "pending",
+      "confirmed_at": null,
+      "link": null
+    },
+    "Pandora": {
+      "status": "confirmed",
+      "confirmed_at": "2026-03-19T20:06:15.575292+00:00",
+      "link": "https://www.pandora.com/search/mecore+low_battery/albums"
+    },
+    "Tidal": {
+      "status": "pending",
+      "confirmed_at": null,
+      "link": null
+    },
+    "Amazon Music": {
+      "status": "confirmed",
+      "confirmed_at": "2026-03-19T20:06:15.967176+00:00",
+      "link": "https://music.amazon.com/search/mecore+low_battery"
+    },
+    "YouTube Music": {
+      "status": "confirmed",
+      "confirmed_at": "2026-03-19T20:06:16.464801+00:00",
+      "link": "https://music.youtube.com/search?q=mecore+low_battery"
+    },
+    "SoundCloud": {
+      "status": "pending",
+      "confirmed_at": null,
+      "link": null
+    },
+    "Audiomack": {
+      "status": "pending",
+      "confirmed_at": null,
+      "link": null
+    },
+    "Boomplay": {
+      "status": "confirmed",
+      "confirmed_at": "2026-03-19T20:06:17.134860+00:00",
+      "link": "https://www.boomplay.com/search/default/mecore+low_battery"
+    },
+    "Anghami": {
+      "status": "pending",
+      "confirmed_at": null,
+      "link": null
+    },
+    "JioSaavn": {
+      "status": "pending",
+      "confirmed_at": null,
+      "link": null
+    },
+    "Napster": {
+      "status": "pending",
+      "confirmed_at": null,
+      "link": null
+    },
+    "Shazam": {
+      "status": "pending",
+      "confirmed_at": null,
+      "link": null
+    },
+    "Beatport": {
+      "status": "confirmed",
+      "confirmed_at": "2026-03-19T20:06:22.258715+00:00",
+      "link": "https://www.beatport.com/search/releases?q=mecore+low_battery"
+    },
+    "NetEase Cloud Music": {
+      "status": "manual",
+      "confirmed_at": null,
+      "link": null
+    },
+    "QQ Music": {
+      "status": "manual",
+      "confirmed_at": null,
+      "link": null
+    },
+    "KKBox": {
+      "status": "manual",
+      "confirmed_at": null,
+      "link": null
+    },
+    "Line Music": {
+      "status": "manual",
+      "confirmed_at": null,
+      "link": null
+    },
+    "AWA": {
+      "status": "manual",
+      "confirmed_at": null,
+      "link": null
+    },
+    "Melon": {
+      "status": "manual",
+      "confirmed_at": null,
+      "link": null
+    },
+    "Bugs Music": {
+      "status": "manual",
+      "confirmed_at": null,
+      "link": null
+    },
+    "Genie Music": {
+      "status": "manual",
+      "confirmed_at": null,
+      "link": null
+    },
+    "Gaana": {
+      "status": "manual",
+      "confirmed_at": null,
+      "link": null
+    },
+    "Wynk Music": {
+      "status": "manual",
+      "confirmed_at": null,
+      "link": null
+    },
+    "Claro M\u00fasica": {
+      "status": "manual",
+      "confirmed_at": null,
+      "link": null
+    },
+    "Nuuday": {
+      "status": "manual",
+      "confirmed_at": null,
+      "link": null
+    },
+    "TikTok Music": {
+      "status": "manual",
+      "confirmed_at": null,
+      "link": null
+    },
+    "Facebook / Instagram": {
+      "status": "manual",
+      "confirmed_at": null,
+      "link": null
+    },
+    "Peloton": {
+      "status": "manual",
+      "confirmed_at": null,
+      "link": null
+    },
+    "Gracenote": {
+      "status": "manual",
+      "confirmed_at": null,
+      "link": null
+    },
+    "MediaNet": {
+      "status": "manual",
+      "confirmed_at": null,
+      "link": null
+    },
+    "Soundtrack by Twitch": {
+      "status": "manual",
+      "confirmed_at": null,
+      "link": null
+    },
+    "Resso": {
+      "status": "manual",
+      "confirmed_at": null,
+      "link": null
+    },
+    "7digital": {
+      "status": "manual",
+      "confirmed_at": null,
+      "link": null
+    }
   }
 }

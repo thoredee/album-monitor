@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mecore — Release Tracker</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0d0d0f;
+      color: #e0e0e0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      padding: 2rem 1rem 4rem;
+    }
+
+    .hero {
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+      text-align: center;
+    }
+
+    .album-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #1db954, #1ed760, #a0f0c0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+    }
+
+    .artist-name {
+      font-size: 1.1rem;
+      color: #888;
+      margin-top: 0.4rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .spotify-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.4rem;
+      padding: 0.65rem 1.5rem;
+      background: #1db954;
+      color: #000;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: 500px;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: background 0.2s;
+    }
+    .spotify-btn:hover { background: #1ed760; }
+    .spotify-btn svg { width: 18px; height: 18px; }
+
+    .progress-section {
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.6rem;
+    }
+
+    .progress-label {
+      font-size: 0.85rem;
+      color: #888;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .progress-count {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .progress-count span {
+      font-size: 1rem;
+      color: #555;
+      font-weight: 400;
+    }
+
+    .bar-bg {
+      height: 6px;
+      background: #222;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #1db954, #1ed760);
+      border-radius: 3px;
+      transition: width 1s ease;
+    }
+
+    .last-checked {
+      font-size: 0.75rem;
+      color: #444;
+      margin-top: 0.6rem;
+      text-align: right;
+    }
+
+    .grid {
+      max-width: 680px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      border-radius: 10px;
+      background: #16161a;
+      border: 1px solid #222;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .card.confirmed {
+      border-color: #1db95433;
+      background: #0d1f14;
+    }
+    .card.confirmed:hover {
+      border-color: #1db954;
+      background: #0f2618;
+    }
+
+    .card.pending { opacity: 0.55; }
+    .card.manual { opacity: 0.4; }
+
+    .icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      color: #1db954;
+    }
+    .card.pending .icon, .card.manual .icon { color: #444; }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      min-width: 0;
+    }
+
+    .platform-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .date {
+      font-size: 0.72rem;
+      color: #555;
+    }
+    .card.confirmed .date { color: #1db95499; }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="album-title">mecore</div>
+    <div class="artist-name">low_battery</div>
+    <a class="spotify-btn" href="https://open.spotify.com/album/6YYc7yRKfMUyvGzw1sXoRT" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+      </svg>
+      Listen on Spotify
+    </a>
+  </div>
+
+  <div class="progress-section">
+    <div class="progress-header">
+      <span class="progress-label">Platforms live</span>
+      <span class="progress-count" id="count">1 <span>/ 36</span></span>
+    </div>
+    <div class="bar-bg"><div class="bar-fill" id="bar" style="width: 3%"></div></div>
+    <div class="last-checked" id="last-checked">Last checked: Never — first run pending</div>
+  </div>
+
+  <div class="grid" id="grid">
+    <!-- Populated by JavaScript from status.json -->
+  </div>
+
+  <script>
+    async function load() {
+      let data;
+      try {
+        const r = await fetch('status.json?t=' + Date.now());
+        data = await r.json();
+      } catch(e) {
+        document.getElementById('last-checked').textContent = 'Could not load status.json';
+        return;
+      }
+
+      const platforms = data.platforms || {};
+      const entries = Object.entries(platforms);
+      const confirmed = entries.filter(([,v]) => v.status === 'confirmed');
+      const pending = entries.filter(([,v]) => v.status === 'pending');
+      const manual = entries.filter(([,v]) => v.status === 'manual');
+      const total = entries.length;
+      const count = confirmed.length;
+
+      document.getElementById('count').innerHTML = `${count} <span>/ ${total}</span>`;
+      document.getElementById('bar').style.width = Math.round(count/total*100) + '%';
+
+      const lc = data.last_checked;
+      if (lc) {
+        const dt = new Date(lc);
+        document.getElementById('last-checked').textContent =
+          'Last checked: ' + dt.toUTCString().replace('GMT','UTC');
+      }
+
+      const grid = document.getElementById('grid');
+      grid.innerHTML = '';
+
+      const sorted = [
+        ...confirmed.sort((a,b) => a[0].localeCompare(b[0])),
+        ...pending.sort((a,b) => a[0].localeCompare(b[0])),
+        ...manual.sort((a,b) => a[0].localeCompare(b[0])),
+      ];
+
+      for (const [name, info] of sorted) {
+        const el = document.createElement(info.status === 'confirmed' && info.link ? 'a' : 'div');
+        el.className = `card ${info.status}`;
+        if (info.status === 'confirmed' && info.link) {
+          el.href = info.link;
+          el.target = '_blank';
+          el.rel = 'noopener';
+        }
+
+        let dateStr = '';
+        if (info.confirmed_at) {
+          const d = new Date(info.confirmed_at);
+          dateStr = d.toLocaleDateString('en-GB', {day:'2-digit', month:'short', year:'numeric'});
+        } else if (info.status === 'manual') {
+          dateStr = 'regional / manual';
+        } else {
+          dateStr = 'checking hourly\u2026';
+        }
+
+        el.innerHTML = `
+          <span class="icon">${info.status === 'confirmed' ? '✓' : info.status === 'manual' ? '◎' : '○'}</span>
+          <div class="card-body">
+            <span class="platform-name">${name}</span>
+            <span class="date">${dateStr}</span>
+          </div>`;
+        grid.appendChild(el);
+      }
+    }
+
+    load();
+  </script>
+</body>
+</html>
